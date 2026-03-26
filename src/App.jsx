@@ -20,11 +20,11 @@ async function askClaude(prompt, system = "") {
 // ── Storage ──────────────────────────────────────────────────────────────────
 const store = {
   async get(key) {
-    try { const r = await window.storage.get(key); return r ? JSON.parse(r.value) : null; }
+    try { const r = localStorage.getItem(key); return r ? JSON.parse(r) : null; }
     catch { return null; }
   },
   async set(key, val) {
-    try { await window.storage.set(key, JSON.stringify(val)); } catch {}
+    try { localStorage.setItem(key, JSON.stringify(val)); } catch {}
   },
 };
 
